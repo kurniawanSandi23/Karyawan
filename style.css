@@ -1,0 +1,42 @@
+:root {
+  --accent: #556ee6;
+  --muted: #6c757d;
+}
+
+body {
+  background: linear-gradient(180deg, #f7f9ff, #fff);
+  font-family: Inter, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+}
+
+.card-hero {
+  background: linear-gradient(90deg, rgba(85,110,230,0.12), rgba(0,0,0,0));
+  border: none;
+}
+
+header .brand {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.drop-area {
+  border: 2px dashed #e3e6f3;
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.small-muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chart-wrap {
+  min-height: 260px;
+}
+
+@media(max-width:575px) {
+  .flex-lg-row {
+    flex-direction: column !important;
+  }
+}

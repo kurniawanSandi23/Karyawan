@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <title>PT Nexwave.</title>
+
+    <link rel="icon" type="image/png" href="https://www.google.com/imgres?q=pt%20nexwave&imgurl=https%3A%2F%2Fptnw.net%2Fassets%2Fmedia%2Fnds%2Flogo.png&imgrefurl=https%3A%2F%2Fptnw.net%2F&docid=iy-mjOg0xh0CiM&tbnid=Ys4D39wqLrKSiM&vet=12ahUKEwjZ-d-st_GPAxXYzjgGHY_nIA8QM3oECBkQAA..i&w=494&h=155&hcb=2&ved=2ahUKEwjZ-d-st_GPAxXYzjgGHY_nIA8QM3oECBkQAA">
+</head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attendance Dashboard — WFH / WFO Grouping</title>
+
+  <!-- Bootstrap & DataTables CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container my-4">
+    <header class="d-flex align-items-center justify-content-between mb-3">
+      <div>
+        <h3 class="brand">Attendance Dashboard PT Nexwave.</h3>
+        <div class="small-muted">Upload file Excel </div>
+      </div>
+      <div>
+        <button id="download-sample" class="btn btn-outline-primary btn-sm">PT Nexwave.</button>
+      </div>
+    </header>
+
+    <div class="row g-3">
+      <div class="col-12 col-lg-4">
+        <div class="card card-hero p-3 mb-3">
+          <h5>1) Upload / Drop File Excel</h5>
+          <div class="drop-area mt-2" id="drop-area">
+            <p class="mb-2">Drag &amp; drop file .xlsx di sini atau klik tombol</p>
+            <input type="file" id="file-input" accept=".xlsx,.xls" style="display:none">
+            <button id="btn-browse" class="btn btn-primary btn-sm">Pilih File Excel</button>
+            <div class="mt-3 small-muted">kolom : nama, tanggal, Attendance Status, Total Jam Kerja.</div>
+          </div>
+
+          <hr />
+          <h6>2) Filter cepat</h6>
+          <div class="d-flex gap-2 mt-2 flex-wrap">
+            <select id="col-filter" class="form-select form-select-sm">
+              <option value="all">Semua Status</option>
+              <option value="WFH">WFH</option>
+              <option value="WFO">WFO</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Other">Other</option>
+            </select>
+            <button id="export-csv" class="btn btn-outline-success btn-sm">Export CSV</button>
+          </div>
+
+          <div class="mt-3 small-muted">Karyawan PT Nexwave.</div>
+        </div>
+
+        <div class="card p-3">
+          <h6>Ringkasan Cepat</h6>
+          <ul class="list-unstyled mb-0 mt-2" id="quick-stats">
+            <li>Total Record: <strong id="stat-total">0</strong></li>
+            <li>Unique Nama: <strong id="stat-names">0</strong></li>
+            <li>WFH: <strong id="stat-wfh">0</strong> • WFO: <strong id="stat-wfo">0</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-8">
+        <div class="card p-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Tabel Data</h5>
+            <div class="small-muted">Klik header untuk sort • cari nama / tanggal</div>
+          </div>
+          <div class="table-responsive">
+            <table id="data-table" class="display nowrap" style="width:100%;">
+              <thead>
+                <tr id="table-head"></tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card p-3">
+          <div class="d-flex gap-3 flex-lg-row flex-column">
+            <div class="flex-fill">
+              <h6>Persentase Status</h6>
+              <div class="chart-wrap"><canvas id="pieChart"></canvas></div>
+            </div>
+            <div class="flex-fill">
+              <h6>Jumlah per Nama (Top 10)</h6>
+              <div class="chart-wrap"><canvas id="barChart"></canvas></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="text-center mt-4 small-muted">Jl. Tebet Raya No.5 10, RT.10/RW.1, Tebet Bar., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810.</footer>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
